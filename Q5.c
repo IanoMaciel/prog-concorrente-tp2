@@ -19,6 +19,7 @@ int main()
         printf("\n");
     }
     
+    // operação de soma
     for(linha = 0; linha < tam; linha++) {
         for(coluna = 0; coluna < tam; coluna++) {
             total += array[linha][coluna];
