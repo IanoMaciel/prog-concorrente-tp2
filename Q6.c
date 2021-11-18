@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 
 #define tam 3
-
 
 int main()
 {
@@ -24,6 +24,7 @@ int main()
     
     // imprime matriz inversa
     printf("\nMatriz resultante\n");
+    #pragma omp parallel for
     for(linha = tam-1; linha >= 0; linha--)
     {
         for(coluna = tam-1; coluna >= 0; coluna--)

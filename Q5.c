@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 
 #define tam 3
 
@@ -11,8 +12,10 @@ int main()
     
     // preenche e imprime matriz
     printf("Matriz\n");
-    for(linha = 0; linha < tam; linha++) {
-        for(coluna = 0; coluna < tam; coluna++) {   
+    for(linha = 0; linha < tam; linha++)
+    {
+        for(coluna = 0; coluna < tam; coluna++)
+        {   
             array[linha][coluna] = ++cont;
             printf("[%d]", array[linha][coluna]);
         }
@@ -20,11 +23,12 @@ int main()
     }
     
     // operação de soma
-    for(linha = 0; linha < tam; linha++) {
-        for(coluna = 0; coluna < tam; coluna++) {
+    #pragma omp parallel for
+    for(linha = 0; linha < tam; linha++)
+    {
+        for(coluna = 0; coluna < tam; coluna++)
             total += array[linha][coluna];
-        }
     }
-    
+
     printf("\nTotal: %d", total);
 }
